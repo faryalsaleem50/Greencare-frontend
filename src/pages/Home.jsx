@@ -3,6 +3,18 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import hero from "../assets/hero.jpg";
 import Footer from "../components/Footer";
+import delieveryImage from "../assets/delievery.png";
+import wellnessImage from "../assets/wellness.png";
+import flowerImage from "../assets/flower.png";
+import edibleImage from "../assets/edible.png";
+import cbdImage from "../assets/cbd.png";
+import concentratesImage from "../assets/concentrates.png";
+import vaporizerImage from "../assets/vaporizer.png";
+import preRollsImage from "../assets/pre-rolls.png";
+import catridgesImage from "../assets/catridges.png";
+
+
+
 
 function Home() {
   const [showTestimonial, setShowTestimonial] = useState(false);
@@ -156,13 +168,15 @@ function Home() {
       </div>
 
       {/* Right Image */}
+       {/* Right Image */}
       <div className="md:w-1/2">
         <img
-          src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2024/06/LF_homepage_slider_img3.jpg"
+          src={delieveryImage}
           alt="Cannabis Delivery"
           className="w-full h-auto rounded-lg shadow-lg"
         />
       </div>
+
 
     </div>
   </div>
@@ -180,7 +194,7 @@ function Home() {
       <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
-            src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2024/06/Cartridges.webp"
+            src={flowerImage}
             alt="Flower"
             className="w-32 h-32 rounded-full object-cover"
           />
@@ -191,7 +205,7 @@ function Home() {
       <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
-            src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2024/06/PLUS-group-2.jpg"
+            src={edibleImage}
             alt="Edibles"
             className="w-32 h-32 rounded-full object-cover"
           />
@@ -202,7 +216,7 @@ function Home() {
       <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
-            src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2024/06/CBD-1536x1536.webp"
+            src={cbdImage}
             alt="CDM"
             className="w-32 h-32 rounded-full object-cover"
           />
@@ -213,7 +227,7 @@ function Home() {
       <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
-            src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2024/06/Concentrates-1.jpg"
+            src={concentratesImage}
             alt="Concentrates"
             className="w-32 h-32 rounded-full object-cover"
           />
@@ -227,7 +241,7 @@ function Home() {
       <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
-            src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2024/06/vaporizer-for-cbd-hemp.jpg"
+            src={vaporizerImage}
             alt="Vaporizers"
             className="w-32 h-32 rounded-full object-cover"
           />
@@ -238,7 +252,7 @@ function Home() {
       <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
-            src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2024/06/5_Pack_PreRoll_A-scaled-1.jpg"
+            src={preRollsImage}
             alt="Pre Rolls"
             className="w-32 h-32 rounded-full object-cover"
           />
@@ -249,7 +263,7 @@ function Home() {
       <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
-            src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2024/06/YBG_JH_SF_WBG_Runtz_1_600x.webp"
+            src={catridgesImage}
             alt="Cartridges"
             className="w-32 h-32 rounded-full object-cover"
           />
@@ -443,8 +457,8 @@ function Home() {
       {/* Right Image */}
       <div className="md:w-1/2">
         <img
-          src="https://greencarecannabisdispensary.com/wp-content/uploads/2026/05/LF_homepage_slider_img1.jpg"
-          alt="Wellness with Green leaf"
+          src={wellnessImage}
+          alt="Wellness"
           className="w-full h-auto rounded-lg shadow-lg"
         />
       </div>

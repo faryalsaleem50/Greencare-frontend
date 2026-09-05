@@ -1,5 +1,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import cannabisImage from "../assets/cannabis.png";
+import aboutImage from "../assets/about.png";
 
 function About() {
   return (
@@ -7,21 +9,20 @@ function About() {
       <Navbar />
 
       {/* Hero Section */}
-      <section
-        className="relative w-full h-64 md:h-80 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://www.greencarecannabisdispensary.com/wp-content/uploads/2024/06/bg-header.jpg')",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/20"></div>
+   <section
+  className="relative w-full h-64 md:h-80 bg-cover bg-center"
+  style={{
+    backgroundImage: `url(${aboutImage})`,
+  }}
+>
+  <div className="absolute inset-0 bg-black/20"></div>
 
-        <div className="relative flex items-center justify-center h-full text-center text-white px-4">
-          <h1 className="text-3xl md:text-4xl font-bold">
-            About Us
-          </h1>
-        </div>
-      </section>
+  <div className="relative flex items-center justify-center h-full text-center text-white px-4">
+    <h1 className="text-3xl md:text-4xl font-bold">
+      About Us
+    </h1>
+  </div>
+</section>
 
       {/* About Section */}
       <section className="w-full py-16 bg-white">
@@ -64,13 +65,14 @@ function About() {
             </div>
 
             {/* Image */}
-            <div className="md:w-1/2">
-              <img
-                src="https://greencarecannabisdispensary.com/wp-content/uploads/2026/05/CannabisWildWest-1-768x511.jpg"
-                alt="Our Dispensary"
-                className="w-full max-h-[500px] object-cover rounded-lg shadow-lg"
-              />
-            </div>
+{/* Image */}
+<div className="md:w-1/2">
+  <img
+    src={cannabisImage}
+    alt="Our Dispensary"
+    className="w-full max-h-[500px] object-cover rounded-lg shadow-lg"
+  />
+</div>
           </div>
         </div>
       </section>

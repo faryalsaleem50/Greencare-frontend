@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import contactImage from "../assets/contact.png";
 
 function Contact() {
   return (
@@ -10,8 +11,7 @@ function Contact() {
       <section
         className="relative w-full h-64 md:h-screen bg-cover bg-center"
         style={{
-          backgroundImage:
-            "url('https://www.greencarecannabisdispensary.com/wp-content/uploads/2024/06/1500x1000-136.png')",
+          backgroundImage: `url(${contactImage})`,
         }}
       >
         <div className="absolute inset-0 bg-black/40"></div>

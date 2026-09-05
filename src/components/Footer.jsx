@@ -1,3 +1,5 @@
+import logoImage from "../assets/logo.png";
+
 function Footer() {
   return (
     <footer className="w-full bg-blue-950 py-24 text-white">
@@ -5,7 +7,7 @@ function Footer() {
 
         <div className="mb-10">
           <img
-            src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2024/06/GREEN-CARE-1.png"
+            src={logoImage}
             alt="Green Care Cannabis Dispensary"
             className="h-28 md:h-36 object-contain mx-auto"
           />

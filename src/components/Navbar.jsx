@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import logoImage from "../assets/logo.png";
 
 function Navbar() {
   const [mobileMenu, setMobileMenu] = useState(false);
@@ -30,7 +31,7 @@ function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
-              src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2024/06/GREEN-CARE-2-300x281.png"
+              src={logoImage}
               alt="GreenCare Cannabis Dispensary"
               className="h-12 md:h-14 object-contain"
             />
