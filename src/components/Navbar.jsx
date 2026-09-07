@@ -166,7 +166,7 @@ function Navbar() {
               href="tel:+16125642170"
               className="font-semibold text-blue-800"
             >
-              📞 (612) 564-2170
+              📞 +1 (213) 876-7356
             </a>
           </div>
 

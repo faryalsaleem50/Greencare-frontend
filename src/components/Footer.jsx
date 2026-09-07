@@ -24,10 +24,10 @@ function Footer() {
           </h5>
 
           <a
-            href="tel:+16125642170"
+            href="tel:+12138767356"
             className="text-lg font-semibold hover:text-blue-300"
           >
-            📞 (612) 564-2170
+            📞 +1 (213) 876-7356
           </a>
         </div>
 

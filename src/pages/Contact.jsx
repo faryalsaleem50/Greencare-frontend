@@ -54,7 +54,7 @@ function Contact() {
                   href="mailto:info@greencarecannabisdispensary.com"
                   className="text-green-600 hover:underline"
                 >
-                  info@greencarecannabisdispensary.com
+                  akulicreation1@gmail.com
                 </a>
               </p>
 
@@ -68,10 +68,10 @@ function Contact() {
                 </h5>
 
                 <a
-                  href="tel:+16125642170"
+                  href="tel:+12138767356"
                   className="text-lg font-semibold text-blue-800 hover:text-green-600"
                 >
-                  📞 (612) 564-2170
+                  📞 +1 (213) 876-7356
                 </a>
               </div>
             </div>
