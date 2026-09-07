@@ -12,8 +12,14 @@ import concentratesImage from "../assets/concentrates.png";
 import vaporizerImage from "../assets/vaporizer.png";
 import preRollsImage from "../assets/pre-rolls.png";
 import catridgesImage from "../assets/catridges.png";
-
-
+import purpleThunderImage from "../assets/purple-thunder.jpg";
+import G13Image from "../assets/G13.jpg";
+import koaBananaCreamImage from "../assets/KOA Banana Cream x Jealousy.jpg";
+import lowellSmokesImage from "../assets/Lowell Smokes.jpg";
+import northernNightsImage from "../assets/NORTHERN NIGHTS.webp";
+import cbdGummiesImage from "../assets/CBD Relief Tropical Mango Gummies.jpg";
+import darkChocolateAlmondsImage from "../assets/Dark Chocolate Sweet & Salty Almonds.jpg";
+import snickerdoodleCookiesImage from "../assets/Gluten Free Snickerdoodle Cookies.jpg";
 
 
 function Home() {
@@ -182,16 +188,22 @@ function Home() {
   </div>
 </section>
 
-        {/* Shop By Category */}
+     {/* Shop By Category */}
 <section className="w-full bg-blue-800 py-20">
   <div className="container mx-auto px-4">
+
     <h2 className="text-3xl font-bold text-center text-white mb-12">
       Shop By Category
     </h2>
 
     {/* Top Row */}
     <div className="flex flex-wrap justify-center gap-8 mb-12">
-      <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
+
+      {/* Flower */}
+      <Link
+        to="/flower"
+        className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center"
+      >
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
             src={flowerImage}
@@ -199,10 +211,17 @@ function Home() {
             className="w-32 h-32 rounded-full object-cover"
           />
         </div>
-        <span className="mt-3 text-white font-semibold">Flower</span>
-      </a>
 
-      <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
+        <span className="mt-3 text-white font-semibold">
+          Flower
+        </span>
+      </Link>
+
+      {/* Edibles */}
+      <Link
+        to="/edibles"
+        className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center"
+      >
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
             src={edibleImage}
@@ -210,10 +229,17 @@ function Home() {
             className="w-32 h-32 rounded-full object-cover"
           />
         </div>
-        <span className="mt-3 text-white font-semibold">Edibles</span>
-      </a>
 
-      <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
+        <span className="mt-3 text-white font-semibold">
+          Edibles
+        </span>
+      </Link>
+
+      {/* CDM */}
+      <Link
+        to="/cdm"
+        className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center"
+      >
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
             src={cbdImage}
@@ -221,10 +247,17 @@ function Home() {
             className="w-32 h-32 rounded-full object-cover"
           />
         </div>
-        <span className="mt-3 text-white font-semibold">CDM</span>
-      </a>
 
-      <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
+        <span className="mt-3 text-white font-semibold">
+          CDM
+        </span>
+      </Link>
+
+      {/* Concentrates */}
+      <Link
+        to="/concentrates"
+        className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center"
+      >
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
             src={concentratesImage}
@@ -232,13 +265,22 @@ function Home() {
             className="w-32 h-32 rounded-full object-cover"
           />
         </div>
-        <span className="mt-3 text-white font-semibold">Concentrates</span>
-      </a>
+
+        <span className="mt-3 text-white font-semibold">
+          Concentrates
+        </span>
+      </Link>
+
     </div>
 
     {/* Bottom Row */}
     <div className="flex flex-wrap justify-center gap-8">
-      <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
+
+      {/* Vaporizers */}
+      <Link
+        to="/vaporizers"
+        className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center"
+      >
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
             src={vaporizerImage}
@@ -246,10 +288,17 @@ function Home() {
             className="w-32 h-32 rounded-full object-cover"
           />
         </div>
-        <span className="mt-3 text-white font-semibold">Vaporizers</span>
-      </a>
 
-      <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
+        <span className="mt-3 text-white font-semibold">
+          Vaporizers
+        </span>
+      </Link>
+
+      {/* Pre-Rolls */}
+      <Link
+        to="/prerolls"
+        className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center"
+      >
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
             src={preRollsImage}
@@ -257,10 +306,17 @@ function Home() {
             className="w-32 h-32 rounded-full object-cover"
           />
         </div>
-        <span className="mt-3 text-white font-semibold">Pre-Rolls</span>
-      </a>
 
-      <a href="#" className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center">
+        <span className="mt-3 text-white font-semibold">
+          Pre-Rolls
+        </span>
+      </Link>
+
+      {/* Cartridges */}
+      <Link
+        to="/cartridges"
+        className="group flex-1 min-w-[220px] max-w-[280px] flex flex-col items-center"
+      >
         <div className="w-40 h-40 rounded-full bg-white flex items-center justify-center shadow-lg group-hover:shadow-2xl transition">
           <img
             src={catridgesImage}
@@ -268,9 +324,14 @@ function Home() {
             className="w-32 h-32 rounded-full object-cover"
           />
         </div>
-        <span className="mt-3 text-white font-semibold">Cartridges</span>
-      </a>
+
+        <span className="mt-3 text-white font-semibold">
+          Cartridges
+        </span>
+      </Link>
+
     </div>
+
   </div>
 </section>
 
@@ -286,8 +347,7 @@ function Home() {
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
         <img
-          src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2022/08/71d4c91b-4a22-4c20-8d9d-3684b4625991.webp"
-          alt="Purple Thunder"
+          src={purpleThunderImage}
           className="w-full h-48 object-cover"
         />
         <div className="p-4">
@@ -302,7 +362,7 @@ function Home() {
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
         <img
-          src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2022/08/G13.webp"
+          src={G13Image}
           alt="G13"
           className="w-full h-48 object-cover"
         />
@@ -318,7 +378,7 @@ function Home() {
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
         <img
-          src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2022/08/KOA-Banana-Cream-x-Jealousy-10-ct.-Infused-Pre-Rolls-600x600-1.webp"
+          src={koaBananaCreamImage}
           alt="KOA Banana Cream"
           className="w-full h-48 object-cover"
         />
@@ -334,7 +394,7 @@ function Home() {
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
         <img
-          src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2022/08/Lowell-Smokes.webp"
+          src={lowellSmokesImage}
           alt="Lowell Smokes"
           className="w-full h-48 object-cover"
         />
@@ -355,13 +415,13 @@ function Home() {
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
         <img
-          src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2022/08/NORTHERN-NIGHTS.webp"
+          src={northernNightsImage}
           alt="Northern Nights"
           className="w-full h-48 object-cover"
         />
         <div className="p-4">
           <h3 className="text-lg font-semibold text-green-600 mb-1">
-            NORTHERN NIGHTS
+            NORTHERN LIGHTS
           </h3>
           <p className="text-gray-800 font-bold">
             $80.00 – $1,450.00
@@ -371,7 +431,7 @@ function Home() {
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
         <img
-          src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2022/08/PLUS-Mango-CBD-relief-gummies.webp"
+          src={cbdGummiesImage}
           alt="CBD Gummies"
           className="w-full h-48 object-cover"
         />
@@ -387,7 +447,7 @@ function Home() {
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
         <img
-          src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2022/08/Satori-Dark-Chocolate-Almonds-CBD.webp"
+          src={darkChocolateAlmondsImage}
           alt="Dark Chocolate Almonds"
           className="w-full h-48 object-cover"
         />
@@ -403,7 +463,7 @@ function Home() {
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition">
         <img
-          src="https://www.greencarecannabisdispensary.com/wp-content/uploads/2022/08/Dr-Norms-Cookies-Snickerdoodle-10mg.webp"
+          src={snickerdoodleCookiesImage}
           alt="Snickerdoodle Cookies"
           className="w-full h-48 object-cover"
         />
