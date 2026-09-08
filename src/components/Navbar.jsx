@@ -264,10 +264,16 @@ function Navbar() {
               </>
             )}
 
-            <Link to="/contact" className="block py-2">
-              Contact Us
-            </Link>
+          <Link to="/contact" className="block py-2">
+  Contact Us
+</Link>
 
+<a
+  href="tel:+16125642170"
+  className="block py-2 font-semibold text-blue-800"
+>
+  📞 +1 (213) 876-7356
+</a>
           </div>
         )}
 
