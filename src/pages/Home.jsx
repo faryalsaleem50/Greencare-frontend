@@ -12,7 +12,7 @@ import concentratesImage from "../assets/concentrates.png";
 import vaporizerImage from "../assets/vaporizer.png";
 import preRollsImage from "../assets/pre-rolls.png";
 import catridgesImage from "../assets/catridges.png";
-import purpleThunderImage from "../assets/purple-thunder.jpg";
+import purpleThunderImage from "../assets/purple thunder.jpg";
 import G13Image from "../assets/G13.jpg";
 import koaBananaCreamImage from "../assets/KOA Banana Cream x Jealousy.jpg";
 import lowellSmokesImage from "../assets/Lowell Smokes.jpg";

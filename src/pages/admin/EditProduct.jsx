@@ -91,16 +91,15 @@ function EditProduct() {
   return;
 }
 
-      const res = await axios.put(
-        `https://greencare-backend.vercel.app/api/products/${id}`,
-        data,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+const res = await axios.put(
+  `${import.meta.env.VITE_API_URL}/api/products/${id}`,
+  data,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+);
 
       Swal.fire({
         icon: "success",
