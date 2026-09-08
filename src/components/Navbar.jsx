@@ -117,6 +117,13 @@ function Navbar() {
               Add to Cart
             </Link>
 
+            <Link
+  to="/my-orders"
+  className="font-semibold text-black-800"
+>
+  My Orders
+</Link>
+
             {/* Login / Logout */}
 
             {user ? (
@@ -238,6 +245,14 @@ function Navbar() {
             <Link to="/cart" className="block py-2">
               Add to Cart
             </Link>
+
+            <Link
+  to="/my-orders"
+  onClick={() => setMobileMenu(false)}
+  className="block py-2 font-semibold text-black-800"
+>
+  My Orders
+</Link>
 
             {user ? (
               <>

@@ -22,6 +22,7 @@ import AdminProtectedRoute from "./components/AdminProtectedRoute";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Orders from "./pages/admin/Orders";
+import MyOrders from "./pages/MyOrders";
 
 
 
@@ -43,6 +44,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/my-orders" element={<MyOrders />} />
        <Route
   path="/admin"
   element={
