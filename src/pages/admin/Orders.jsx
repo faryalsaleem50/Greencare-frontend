@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../../api/axios";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     getOrders();
@@ -13,14 +14,11 @@ function Orders() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/orders`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await API.get("/orders", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       setOrders(res.data.orders || []);
     } catch (error) {
@@ -30,13 +28,25 @@ function Orders() {
     }
   };
 
+  // Search by customer name or email
+  const filteredOrders = orders.filter((order) => {
+    const name = order.fullName?.toLowerCase() || "";
+    const email = order.email?.toLowerCase() || "";
+    const searchText = search.toLowerCase();
+
+    return (
+      name.includes(searchText) ||
+      email.includes(searchText)
+    );
+  });
+
   // Payment Status Update
   const updatePaymentStatus = async (orderId, paymentStatus) => {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/orders/${orderId}`,
+      await API.put(
+        `/orders/${orderId}`,
         { paymentStatus },
         {
           headers: {
@@ -67,8 +77,8 @@ function Orders() {
     try {
       const token = localStorage.getItem("token");
 
-      await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/orders/${orderId}`,
+      await API.put(
+        `/orders/${orderId}`,
         { status: orderStatus },
         {
           headers: {
@@ -111,16 +121,35 @@ function Orders() {
         Orders Management
       </h1>
 
+      {/* Search Bar */}
+      {orders.length > 0 && (
+        <div className="mb-8">
+          <input
+            type="text"
+            placeholder="Search orders by customer name or email..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full md:w-1/2 border border-gray-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+          />
+        </div>
+      )}
+
       {orders.length === 0 ? (
         <div className="bg-white rounded-xl shadow p-8 text-center">
           <h2 className="text-xl font-semibold text-gray-600">
             No orders found.
           </h2>
         </div>
+      ) : filteredOrders.length === 0 ? (
+        <div className="bg-white rounded-xl shadow p-8 text-center">
+          <h2 className="text-xl font-semibold text-gray-600">
+            No matching orders found.
+          </h2>
+        </div>
       ) : (
         <div className="space-y-8">
 
-          {orders.map((order) => (
+          {filteredOrders.map((order) => (
             <div
               key={order._id}
               className="bg-white rounded-xl shadow-lg p-6 border"
