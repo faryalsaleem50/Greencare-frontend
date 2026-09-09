@@ -129,6 +129,15 @@ function Login() {
               {loading ? "Logging In..." : "Login"}
             </button>
 
+                        <div className="text-right">
+              <Link
+                to="/forgot-password"
+                className="text-sm text-green-700 font-semibold hover:underline"
+              >
+                Forgot Password?
+              </Link>
+            </div>
+
             <p className="text-center text-gray-600">
               Don't have an account?{" "}
               <Link

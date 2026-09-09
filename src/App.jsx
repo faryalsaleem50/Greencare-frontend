@@ -23,6 +23,8 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import Orders from "./pages/admin/Orders";
 import MyOrders from "./pages/MyOrders";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 
 
@@ -45,6 +47,11 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/my-orders" element={<MyOrders />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route
+  path="/reset-password/:token"
+  element={<ResetPassword />}
+/>
        <Route
   path="/admin"
   element={
