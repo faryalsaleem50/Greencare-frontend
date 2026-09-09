@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import API from "../../api/axios";
 
 function Dashboard() {
   const [products, setProducts] = useState([]);
@@ -15,9 +15,7 @@ function Dashboard() {
 
   const getProducts = async () => {
     try {
-      const res = await axios.get(
-        "https://greencare-backend.vercel.app/api/products"
-      );
+      const res = await API.get("/products");
 
       setProducts(res.data.products);
     } catch (error) {
@@ -27,9 +25,7 @@ function Dashboard() {
 
   const getUsers = async () => {
     try {
-      const res = await axios.get(
-        "https://greencare-backend.vercel.app/api/auth/users"
-      );
+      const res = await API.get("/auth/users");
 
       setUsers(res.data.users);
     } catch (error) {
@@ -43,14 +39,11 @@ function Dashboard() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get(
-        "https://greencare-backend.vercel.app/api/orders",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await API.get("/orders", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       setOrders(res.data.orders);
     } catch (error) {

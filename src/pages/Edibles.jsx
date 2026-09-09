@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import getImageUrl from "../utils/imageUrl";
 import addToCart from "../utils/addToCart";
+import API from "../api/axios";
 
 function Edibles() {
   const [products, setProducts] = useState([]);
@@ -16,8 +16,8 @@ function Edibles() {
 
   const getEdiblesProducts = async () => {
     try {
-      const res = await axios.get(
-        "https://greencare-backend.vercel.app/api/products/category/Edibles"
+      const res = await API.get(
+        "/products/category/Edibles"
       );
 
       setProducts(res.data.products);
@@ -82,12 +82,13 @@ function Edibles() {
                   <p className="text-green-600 font-bold mt-3 text-xl">
                     ${product.price}
                   </p>
-<button
-  onClick={() => addToCart(product._id)}
-  className="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
->
-  Add To Cart
-</button>
+
+                  <button
+                    onClick={() => addToCart(product._id)}
+                    className="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
+                  >
+                    Add To Cart
+                  </button>
                 </div>
               </div>
             ))}

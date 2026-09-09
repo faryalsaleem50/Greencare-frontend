@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
+import API from "../api/axios";
 
 function Checkout() {
-
   const navigate = useNavigate();
 
   const [cart, setCart] = useState([]);
@@ -28,7 +27,6 @@ function Checkout() {
 
   const getCart = async () => {
     try {
-
       const token = localStorage.getItem("token");
 
       if (!token) {
@@ -37,35 +35,25 @@ function Checkout() {
         return;
       }
 
-      const res = await axios.get(
-        "https://greencare-backend.vercel.app/api/cart",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await API.get("/cart", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       setCart(res.data.cart);
-
     } catch (error) {
-
       console.log(error);
-
     } finally {
-
       setLoading(false);
-
     }
   };
 
   const handleChange = (e) => {
-
     setShipping({
       ...shipping,
       [e.target.name]: e.target.value,
     });
-
   };
 
   const total = cart.reduce(
@@ -73,55 +61,55 @@ function Checkout() {
       sum + (item.product?.price || 0) * item.quantity,
     0
   );
-   const placeOrder = async () => {
-  if (
-    !shipping.fullName ||
-    !shipping.email ||
-    !shipping.phone ||
-    !shipping.address ||
-    !shipping.city ||
-    !shipping.state ||
-    !shipping.zipCode
-  ) {
-    alert("Please fill all shipping details.");
-    return;
-  }
 
-  try {
-    const token = localStorage.getItem("token");
+  const placeOrder = async () => {
+    if (
+      !shipping.fullName ||
+      !shipping.email ||
+      !shipping.phone ||
+      !shipping.address ||
+      !shipping.city ||
+      !shipping.state ||
+      !shipping.zipCode
+    ) {
+      alert("Please fill all shipping details.");
+      return;
+    }
 
-    const res = await axios.post(
-      "https://greencare-backend.vercel.app/api/orders",
-      {
-        fullName: shipping.fullName,
-        email: shipping.email,
-        phone: shipping.phone,
-        address: shipping.address,
-        city: shipping.city,
-        state: shipping.state,
-        zipCode: shipping.zipCode,
-        paymentMethod: shipping.paymentMethod,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
+    try {
+      const token = localStorage.getItem("token");
+
+      const res = await API.post(
+        "/orders",
+        {
+          fullName: shipping.fullName,
+          email: shipping.email,
+          phone: shipping.phone,
+          address: shipping.address,
+          city: shipping.city,
+          state: shipping.state,
+          zipCode: shipping.zipCode,
+          paymentMethod: shipping.paymentMethod,
         },
-      }
-    );
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    alert(res.data.message);
+      alert(res.data.message);
 
-    navigate("/");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
 
-  } catch (error) {
-    console.log(error);
-
-    alert(
-      error.response?.data?.message ||
-      "Something went wrong"
-    );
-  }
-};
+      alert(
+        error.response?.data?.message ||
+          "Something went wrong"
+      );
+    }
+  };
 
   if (loading) {
     return (
@@ -144,23 +132,19 @@ function Checkout() {
       <Navbar />
 
       <div className="max-w-7xl mx-auto px-4 py-12">
-
         <h1 className="text-4xl font-bold text-center text-green-700 mb-10">
           Checkout
         </h1>
 
         <div className="grid lg:grid-cols-2 gap-10">
-
           {/* Shipping Form */}
 
           <div className="bg-white shadow-lg rounded-xl p-8">
-
             <h2 className="text-2xl font-bold mb-6">
               Shipping Information
             </h2>
 
             <div className="space-y-4">
-
               <input
                 type="text"
                 name="fullName"
@@ -225,41 +209,39 @@ function Checkout() {
               />
 
               <div className="mt-6">
-
                 <h3 className="text-xl font-bold mb-4">
                   Payment Method
                 </h3>
 
                 <div className="space-y-3">
+                  {["Zelle", "Chime", "Apple Pay", "PayPal"].map(
+                    (method) => (
+                      <label
+                        key={method}
+                        className="flex items-center gap-3"
+                      >
+                        <input
+                          type="radio"
+                          name="paymentMethod"
+                          value={method}
+                          checked={
+                            shipping.paymentMethod === method
+                          }
+                          onChange={handleChange}
+                        />
 
-                  {["Zelle", "Chime", "Apple Pay", "PayPal"].map((method) => (
-                    <label
-                      key={method}
-                      className="flex items-center gap-3"
-                    >
-                      <input
-                        type="radio"
-                        name="paymentMethod"
-                        value={method}
-                        checked={shipping.paymentMethod === method}
-                        onChange={handleChange}
-                      />
-
-                      {method}
-                    </label>
-                  ))}
-
+                        {method}
+                      </label>
+                    )
+                  )}
                 </div>
-
               </div>
-
             </div>
-
           </div>
-                    {/* Order Summary */}
+
+          {/* Order Summary */}
 
           <div className="bg-white shadow-lg rounded-xl p-8 h-fit">
-
             <h2 className="text-2xl font-bold mb-6">
               Order Summary
             </h2>
@@ -290,7 +272,6 @@ function Checkout() {
             ))}
 
             <div className="mt-8 border-t pt-6">
-
               <div className="flex justify-between text-lg">
                 <span>Subtotal</span>
                 <span>${total.toFixed(2)}</span>
@@ -312,20 +293,14 @@ function Checkout() {
               >
                 Place Order
               </button>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
 
       <Footer />
-
     </>
   );
-
 }
 
 export default Checkout;

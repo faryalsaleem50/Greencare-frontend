@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import getImageUrl from "../utils/imageUrl";
 import addToCart from "../utils/addToCart";
+import API from "../api/axios";
 
 function Flower() {
   const [products, setProducts] = useState([]);
@@ -16,8 +16,8 @@ function Flower() {
 
   const getFlowerProducts = async () => {
     try {
-      const res = await axios.get(
-        "https://greencare-backend.vercel.app/api/products/category/Flower"
+      const res = await API.get(
+        "/products/category/Flower"
       );
 
       setProducts(res.data.products);
@@ -27,7 +27,6 @@ function Flower() {
       setLoading(false);
     }
   };
- 
 
   if (loading) {
     return (
@@ -61,15 +60,15 @@ function Flower() {
                 key={product._id}
                 className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"
               >
-               <img
-  src={getImageUrl(product.image)}
-  alt={product.name}
-  className="w-full h-60 object-cover"
-  onError={(e) => {
-    e.target.src =
-      "https://via.placeholder.com/400x400?text=No+Image";
-  }}
-/>
+                <img
+                  src={getImageUrl(product.image)}
+                  alt={product.name}
+                  className="w-full h-60 object-cover"
+                  onError={(e) => {
+                    e.target.src =
+                      "https://via.placeholder.com/400x400?text=No+Image";
+                  }}
+                />
 
                 <div className="p-4">
                   <h3 className="font-bold text-lg">
@@ -84,12 +83,12 @@ function Flower() {
                     ${product.price}
                   </p>
 
-         <button
-  onClick={() => addToCart(product._id)}
-  className="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
->
-  Add To Cart
-</button>
+                  <button
+                    onClick={() => addToCart(product._id)}
+                    className="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
+                  >
+                    Add To Cart
+                  </button>
                 </div>
               </div>
             ))}

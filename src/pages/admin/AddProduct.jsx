@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import API from "../../api/axios";
 
 function AddProduct() {
   const [formData, setFormData] = useState({
@@ -19,53 +19,47 @@ function AddProduct() {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const data = new FormData();
+    try {
+      const data = new FormData();
 
-    data.append("name", formData.name);
-    data.append("description", formData.description);
-    data.append("price", formData.price);
-    data.append("category", formData.category);
+      data.append("name", formData.name);
+      data.append("description", formData.description);
+      data.append("price", formData.price);
+      data.append("category", formData.category);
 
-    if (image) {
-      data.append("image", image);
-    }
+      if (image) {
+        data.append("image", image);
+      }
 
-    const token = localStorage.getItem("token");
+      const token = localStorage.getItem("token");
 
-    const res = await axios.post(
-      "https://greencare-backend.vercel.app/api/products",
-      data,
-      {
+      const res = await API.post("/products", data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
-      }
-    );
+      });
 
-    alert(res.data.message);
+      alert(res.data.message);
 
-    setFormData({
-      name: "",
-      description: "",
-      price: "",
-      category: "",
-    });
+      setFormData({
+        name: "",
+        description: "",
+        price: "",
+        category: "",
+      });
 
-    setImage(null);
+      setImage(null);
+    } catch (error) {
+      console.log(error);
 
-  } catch (error) {
-    console.log(error);
-
-    alert(
-      error.response?.data?.message || "Something went wrong"
-    );
-  }
-};
-
+      alert(
+        error.response?.data?.message || "Something went wrong"
+      );
+    }
+  };
 
   return (
     <div className="bg-white p-5 sm:p-8 rounded-xl shadow-md w-full">
@@ -74,12 +68,10 @@ function AddProduct() {
         Add Product
       </h1>
 
-
-      <form 
+      <form
         onSubmit={handleSubmit}
         className="space-y-5"
       >
-
 
         <input
           type="text"
@@ -91,7 +83,6 @@ function AddProduct() {
           required
         />
 
-
         <textarea
           name="description"
           placeholder="Description"
@@ -101,7 +92,6 @@ function AddProduct() {
           onChange={handleChange}
           required
         />
-
 
         <input
           type="number"
@@ -113,7 +103,6 @@ function AddProduct() {
           required
         />
 
-
         <select
           name="category"
           className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
@@ -121,7 +110,6 @@ function AddProduct() {
           onChange={handleChange}
           required
         >
-
           <option value="">
             Select Category
           </option>
@@ -153,10 +141,7 @@ function AddProduct() {
           <option value="Vaporizers">
             Vaporizers
           </option>
-
         </select>
-
-
 
         <div>
 
@@ -164,14 +149,12 @@ function AddProduct() {
             Product Image
           </label>
 
-
           <input
             type="file"
             accept="image/*"
             className="w-full border p-3 rounded-lg"
-            onChange={(e)=>setImage(e.target.files[0])}
+            onChange={(e) => setImage(e.target.files[0])}
           />
-
 
           {image && (
             <img
@@ -183,15 +166,12 @@ function AddProduct() {
 
         </div>
 
-
-
         <button
           type="submit"
           className="w-full sm:w-auto bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition"
         >
           Add Product
         </button>
-
 
       </form>
 

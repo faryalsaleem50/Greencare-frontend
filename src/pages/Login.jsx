@@ -1,6 +1,6 @@
 import { useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import API from "../api/axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
@@ -27,15 +27,10 @@ function Login() {
     setLoading(true);
 
     try {
-      const res = await axios.post(
-        "https://greencare-backend.vercel.app/api/auth/login",
-        formData
-      );
+      const res = await API.post("/auth/login", formData);
 
-      // Save JWT
       localStorage.setItem("token", res.data.token);
 
-      // Save logged-in user
       localStorage.setItem(
         "user",
         JSON.stringify(res.data.user)
@@ -43,13 +38,11 @@ function Login() {
 
       alert("Login Successful");
 
-      // Redirect according to role sent from backend
       if (res.data.user.role === "admin") {
         navigate("/admin");
       } else {
         navigate("/");
       }
-
     } catch (error) {
       console.log(error);
 
@@ -67,7 +60,6 @@ function Login() {
       <Navbar />
 
       <section className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4">
-
         <div className="w-full max-w-md bg-white shadow-xl rounded-xl p-8">
 
           <h2 className="text-3xl font-bold text-center text-green-700 mb-2">
@@ -129,7 +121,7 @@ function Login() {
               {loading ? "Logging In..." : "Login"}
             </button>
 
-                        <div className="text-right">
+            <div className="text-right">
               <Link
                 to="/forgot-password"
                 className="text-sm text-green-700 font-semibold hover:underline"
@@ -151,7 +143,6 @@ function Login() {
           </form>
 
         </div>
-
       </section>
 
       <Footer />

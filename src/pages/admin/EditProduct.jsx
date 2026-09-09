@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import getImageUrl from "../../utils/imageUrl";
+import API from "../../api/axios";
 
 function EditProduct() {
   const { id } = useParams();
@@ -24,9 +24,7 @@ function EditProduct() {
 
   const getSingleProduct = async () => {
     try {
-      const res = await axios.get(
-        `https://greencare-backend.vercel.app/api/products/${id}`
-      );
+      const res = await API.get(`/products/${id}`);
 
       const product = res.data.product;
 
@@ -84,22 +82,18 @@ function EditProduct() {
       const token = localStorage.getItem("token");
 
       if (!token) {
-  Swal.fire({
-    icon: "error",
-    title: "Please login first",
-  });
-  return;
-}
+        Swal.fire({
+          icon: "error",
+          title: "Please login first",
+        });
+        return;
+      }
 
-const res = await axios.put(
-  `${import.meta.env.VITE_API_URL}/api/products/${id}`,
-  data,
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  }
-);
+      const res = await API.put(`/products/${id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       Swal.fire({
         icon: "success",
@@ -109,7 +103,6 @@ const res = await axios.put(
       });
 
       navigate("/admin/products");
-
     } catch (error) {
       console.log(error);
 
@@ -131,7 +124,7 @@ const res = await axios.put(
         onSubmit={updateProduct}
         className="space-y-5"
       >
-                <input
+        <input
           type="text"
           name="name"
           placeholder="Product Name"

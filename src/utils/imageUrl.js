@@ -5,7 +5,7 @@ const getImageUrl = (image) => {
     return image;
   }
 
-  return `https://greencare-backend.vercel.app${image}`;
+  return `${import.meta.env.VITE_API_URL}${image}`;
 };
 
 export default getImageUrl;

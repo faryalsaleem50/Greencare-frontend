@@ -1,4 +1,4 @@
-import axios from "axios";
+import API from "../api/axios";
 
 const addToCart = async (productId) => {
   const user = JSON.parse(localStorage.getItem("user"));
@@ -16,8 +16,8 @@ const addToCart = async (productId) => {
   }
 
   try {
-    const res = await axios.post(
-      "https://greencare-backend.vercel.app/api/cart",
+    const res = await API.post(
+      "/cart",
       {
         productId,
       },

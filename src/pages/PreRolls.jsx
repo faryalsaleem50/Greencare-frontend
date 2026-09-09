@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import getImageUrl from "../utils/imageUrl";
 import addToCart from "../utils/addToCart";
+import API from "../api/axios";
 
 function PreRolls() {
   const [products, setProducts] = useState([]);
@@ -16,8 +16,8 @@ function PreRolls() {
 
   const getPreRolls = async () => {
     try {
-      const res = await axios.get(
-        "https://greencare-backend.vercel.app/api/products/category/Pre-Rolls"
+      const res = await API.get(
+        "/products/category/Pre-Rolls"
       );
 
       setProducts(res.data.products);
@@ -86,11 +86,11 @@ function PreRolls() {
                   </p>
 
                   <button
-  onClick={() => addToCart(product._id)}
-  className="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
->
-  Add To Cart
-</button>
+                    onClick={() => addToCart(product._id)}
+                    className="w-full mt-4 bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition"
+                  >
+                    Add To Cart
+                  </button>
                 </div>
               </div>
             ))}
